@@ -16,17 +16,17 @@
 real_estate <- read.csv("goodyearArizona.txt", header = TRUE, sep = "")
 
 # a) Tabla para casas con y sin alberca por municipio
-pool_table <- table(real_estate$municipality, real_estate$pool)
+pool_table <- table(real_estate$Colonia, real_estate$Alberca)
 colnames(pool_table) <- c("Sin Alberca", "Con Alberca")
 print(pool_table)
 
 # Calcular probabilidades
 total_houses <- nrow(real_estate)
-houses_in_township1_or_pool <- sum(real_estate$municipality == "Township 1") + sum(real_estate$pool == 1) - sum(real_estate$municipality == "Township 1" & real_estate$pool == 1)
+houses_in_township1_or_pool <- sum(real_estate$Colonia == "Township 1") + sum(real_estate$Alberca == 1) - sum(real_estate$municipality == "Township 1" & real_estate$pool == 1)
 prob_township1_or_pool <- houses_in_township1_or_pool / total_houses
 
-houses_in_township3 <- sum(real_estate$municipality == "Township 3")
-houses_in_township3_and_pool <- sum(real_estate$municipality == "Township 3" & real_estate$pool == 1)
+houses_in_township3 <- sum(real_estate$Colonia == "Township 3")
+houses_in_township3_and_pool <- sum(real_estate$Colonia == "Township 3" & real_estate$Alberca == 1)
 prob_pool_given_township3 <- houses_in_township3_and_pool / houses_in_township3
 
 prob_pool_and_township3 <- houses_in_township3_and_pool / total_houses
@@ -36,22 +36,22 @@ cat("P(Alberca | Township 3):", prob_pool_given_township3, "\n")
 cat("P(Alberca y Township 3):", prob_pool_and_township3, "\n")
 
 # b) Tabla para casas con y sin cochera por municipio
-garage_table <- table(real_estate$municipality, real_estate$garage)
+garage_table <- table(real_estate$Colonia, real_estate$Cochera)
 colnames(garage_table) <- c("Sin Cochera", "Con Cochera")
 print(garage_table)
 
 # Calcular probabilidades
-houses_with_garage <- sum(real_estate$garage == 1)
+houses_with_garage <- sum(real_estate$Cochera == 1)
 prob_garage <- houses_with_garage / total_houses
 
-houses_in_township5 <- sum(real_estate$municipality == "Township 5")
-houses_in_township5_without_garage <- sum(real_estate$municipality == "Township 5" & real_estate$garage == 0)
+houses_in_township5 <- sum(real_estate$Colonia == "Township 5")
+houses_in_township5_without_garage <- sum(real_estate$Colonia == "Township 5" & real_estate$Cochera == 0)
 prob_no_garage_given_township5 <- houses_in_township5_without_garage / houses_in_township5
 
-houses_with_garage_and_township3 <- sum(real_estate$municipality == "Township 3" & real_estate$garage == 1)
+houses_with_garage_and_township3 <- sum(real_estate$Colonia == "Township 3" & real_estate$Cochera == 1)
 prob_garage_and_township3 <- houses_with_garage_and_township3 / total_houses
 
-houses_without_garage_or_township2 <- sum(real_estate$garage == 0) + sum(real_estate$municipality == "Township 2") - sum(real_estate$garage == 0 & real_estate$municipality == "Township 2")
+houses_without_garage_or_township2 <- sum(real_estate$Cochera == 0) + sum(real_estate$Colonia == "Township 2") - sum(real_estate$garage == 0 & real_estate$municipality == "Township 2")
 prob_no_garage_or_township2 <- houses_without_garage_or_township2 / total_houses
 
 cat("P(Cochera):", prob_garage, "\n")
@@ -94,8 +94,9 @@ cat("P(Sin cochera o Township 2):", prob_no_garage_or_township2, "\n")
 baseball_2009 <- read.csv("baseball.txt", header = TRUE, sep = "")
 
 # Crear variables
-baseball_2009$season_result <- ifelse(baseball_2009$games_won >= 81, "Ganaron", "Perdieron")
-baseball_2009$attendance_category <- cut(baseball_2009$attendance, breaks = c(-Inf, 2e6, 3e6, Inf), labels = c("Menos de 2 millones", "2 a 3 millones", "Más de 3 millones"))
+baseball_2009$season_result <- ifelse(baseball_2009$Victorias. >= 81, "Ganaron", "Perdieron")
+baseball_2009$stadium_age <- 2024 - baseball_2009$Construcción.
+baseball_2009$attendance_category <- cut(baseball_2009$Asistencia., breaks = c(-Inf, 2e6, 3e6, Inf), labels = c("Menos de 2 millones", "2 a 3 millones", "Más de 3 millones"))
 baseball_2009$stadium_age_category <- ifelse(baseball_2009$stadium_age < 15, "Nuevo", "Antiguo")
 
 # a) Tabla de equipos que ganaron vs. asistencia
@@ -159,8 +160,8 @@ cat("P(Temporada de victorias o estadio nuevo):", prob_victory_or_new_stadium, "
 school_buses <- read.csv("schoolBus.txt", header = TRUE, sep = "")
 
 # Crear variables
-school_buses$age_category <- cut(school_buses$age, breaks = c(-Inf, 5, 10, Inf), labels = c("Nuevo", "Medio", "Viejo"))
-school_buses$maintenance_level <- ifelse(school_buses$maintenance_cost < 456, "Bajo", "Alto")
+school_buses$age_category <- cut(school_buses$uso., breaks = c(-Inf, 5, 10, Inf), labels = c("Nuevo", "Medio", "Viejo"))
+school_buses$maintenance_level <- ifelse(school_buses$mantenimiento. < 456, "Bajo", "Alto")
 
 # a) Porcentaje de autobuses nuevos
 percent_new_buses <- sum(school_buses$age_category == "Nuevo") / nrow(school_buses) * 100

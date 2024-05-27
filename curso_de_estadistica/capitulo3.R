@@ -9,7 +9,7 @@
 real_estate <- read.csv("goodyearArizona.txt", header = TRUE, sep = "")
 
 # Seleccionar la columna de precios de venta
-precios <- real_estate$price
+precios <- real_estate$Precio
 
 # a) Análisis de la tendencia central
 precio_medio <- mean(precios)
@@ -58,7 +58,7 @@ cat(informe)
 baseball_2009 <- read.csv("baseball.txt", header = TRUE, sep = "")
 
 # Seleccionar la columna de salarios de los equipos
-salarios <- baseball_2009$salary
+salarios <- baseball_2009$Salario.
 
 # a) Análisis de la tendencia central
 salario_medio <- mean(salarios)
@@ -114,7 +114,7 @@ cat(informe)
 school_buses <- read.csv("schoolBus.txt", header = TRUE, sep = "")
 
 # Seleccionar la columna de costos de mantenimiento
-costos_mantenimiento <- school_buses$maintenance_cost
+costos_mantenimiento <- school_buses$mantenimiento.
 
 # a) Análisis de la tendencia central
 costo_medio <- mean(costos_mantenimiento)

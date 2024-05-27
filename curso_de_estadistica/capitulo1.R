@@ -1,6 +1,6 @@
 # 86. Consulte los datos Real Estate, que contienen información sobre casas 
 # que se vendieron en el área de Goodyear, Arizona, el año pasado. Redacte 
-# un breve informe sobre la distribución de los precios de venta. Asegúrese 
+# un breve informe sobre la distribución de los precios de venta. Asegúrese 
 # de contestar, en dicho reporte, las siguientes preguntas:
 
 # Cargar los datos de Real Estate
@@ -11,7 +11,7 @@ summary(real_estate)
 
 # Distribución de los precios de venta
 # Suponemos que la columna con los precios de venta se llama "price"
-precios <- real_estate$price
+precios <- real_estate$Precio
 
 # a) Análisis de la tendencia central
 precio_medio <- mean(precios)
@@ -22,7 +22,8 @@ rango_precios <- range(precios)
 desviacion_estandar <- sd(precios)
 
 # Intervalo del 95% (asumiendo distribución normal)
-intervalo_95 <- c(precio_medio - 2 * desviacion_estandar, precio_medio + 2 * desviacion_estandar)
+intervalo_95 <- c(precio_medio - 2 * desviacion_estandar, 
+                  precio_medio + 2 * desviacion_estandar)
 
 
 #   a) ¿Alrededor de cuáles variables tienden a concentrarse los datos? 
@@ -46,8 +47,8 @@ b) Rango y desviación estándar:
    - Aproximadamente el 95% de los precios de venta se ubican entre $", round(intervalo_95[1], 2), " y $", round(intervalo_95[2], 2), ".
 
 Estos resultados proporcionan una visión general de la distribución de los precios de venta en el área de Goodyear, Arizona.")
-print(informe)   
 
+cat(informe)   
 
 
 # 87. Consulte los datos Baseball 2009, que incluyen información sobre los 
@@ -77,11 +78,11 @@ summary(baseball_2009)
 
 # Seleccionar la variable que se refiere a los salarios de los equipos
 # Suponemos que la columna con los salarios de los equipos se llama "salary"
-salarios <- baseball_2009$salary
+salarios <- na.omit(baseball_2009$Salario.)
 
 # a) Análisis de la distribución de los salarios
-
 # 1. Análisis de la tendencia central
+
 salario_medio <- mean(salarios)
 salario_mediano <- median(salarios)
 
@@ -122,7 +123,9 @@ b) Incremento del salario promedio de jugadores (1989 a 2009):
    - El incremento en el salario promedio durante este período fue de $", round(incremento_salario, 2), ".
 
 Estos resultados proporcionan una visión general de la distribución de los salarios de los equipos y el incremento en el salario promedio de los jugadores en la liga mayor durante el período especificado.")
-print(informe)
+
+
+cat(informe)
 
 
 # 88. Consulte los datos sobre los autobuses del Distrito Escolar Buena. 
@@ -147,7 +150,7 @@ summary(school_buses)
 
 # Seleccionar la variable que se refiere a los costos de mantenimiento del mes pasado
 # Suponemos que la columna con los costos de mantenimiento se llama "maintenance_cost"
-costos_mantenimiento <- school_buses$maintenance_cost
+costos_mantenimiento <- school_buses$mantenimiento.
 
 # a) Análisis de la distribución de los costos de mantenimiento
 
@@ -178,6 +181,7 @@ a) Análisis de la distribución de los costos de mantenimiento:
    - Aproximadamente el 95% de los costos de mantenimiento se ubican entre $", round(intervalo_95[1], 2), " y $", round(intervalo_95[2], 2), ".
 
 Estos resultados proporcionan una visión general de la distribución de los costos de mantenimiento de los autobuses del Distrito Escolar Buena el mes pasado.")
-print(informe)
+
+cat(informe)
 
 

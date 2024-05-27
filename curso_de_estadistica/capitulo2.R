@@ -29,7 +29,7 @@
 real_estate <- read.csv("goodyearArizona.txt", header = TRUE, sep = "")
 
 # Seleccionar la columna de precios de venta
-precios <- real_estate$price
+precios <- real_estate$Precio
 
 # Seleccionar un intervalo de clase apropiado
 intervalo <- 25000
@@ -55,7 +55,7 @@ porcentaje_menor_125k <- sum(precios < 125000) / length(precios) * 100
 
 # d) Gráfica de barras del número de casas vendidas en cada municipio
 library(ggplot2)
-grafica_municipios <- ggplot(real_estate, aes(x = municipality)) +
+grafica_municipios <- ggplot(real_estate, aes(x = Colonia)) +
   geom_bar() +
   labs(title = "Número de casas vendidas por municipio",
        x = "Municipio",
@@ -100,10 +100,10 @@ cat(reporte)
 # Elabore una gráfica de pastel de cada variable y comente sus hallazgos.
 
 # Cargar los datos de béisbol
-baseball_2009 <- read.csv("goodyearArizona.txt", header = TRUE, sep = "")
+baseball_2009 <- read.csv("baseball.txt", header = TRUE, sep = "")
 
 # Seleccionar la columna de salarios de los equipos
-salarios <- baseball_2009$salary
+salarios <- baseball_2009$Salario.
 
 # Seleccionar un intervalo de clase apropiado
 intervalo <- 10000000
