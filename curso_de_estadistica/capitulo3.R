@@ -77,23 +77,30 @@ salario_2009 <- 3240000
 incremento_salario <- salario_2009 - salario_1989
 
 # Redactar el informe
-informe <- paste(
-  "Informe sobre los salarios de los equipos de las Ligas Mayores de Béisbol durante la temporada 2009:
+informe <- paste(" Informe sobre los salarios de los equipos de 
+las Ligas Mayores de Béisbol durante la temporada 2009:
 
 a) Análisis de la tendencia central:
    - El salario medio de los equipos es $", round(salario_medio, 2), ".
    - El salario mediano de los equipos es $", round(salario_mediano, 2), ".
-   - La medida más representativa de los salarios típicos de los equipos es el salario mediano, ya que no se ve afectada por valores atípicos tanto como el salario medio.
+   - La medida más representativa de los salarios típicos de los equipos 
+   es el salario mediano, ya que no se ve afectada por valores atípicos
+   tanto como el salario medio.
 
 b) Rango y desviación estándar:
-   - El rango de los salarios es de $", round(rango_salarios[1], 2), " a $", round(rango_salarios[2], 2), ".
-   - La desviación estándar de los salarios es $", round(desviacion_estandar, 2), ".
-   - Aproximadamente el 95% de los salarios se ubican entre $", round(intervalo_95[1], 2), " y $", round(intervalo_95[2], 2), ".
+   - El rango de los salarios 
+   es de $", round(rango_salarios[1], 2), " a 
+   $", round(rango_salarios[2], 2), ".
+   - La desviación estándar de los salarios es 
+   $", round(desviacion_estandar, 2), ".
+   - Aproximadamente el 95% de los salarios se ubican entre 
+   $", round(intervalo_95[1], 2), " y $", round(intervalo_95[2], 2), ".
 
 b) Incremento del salario promedio de jugadores (1989 a 2009):
    - En 1989, el salario promedio de un jugador fue de $512,930.
    - En 2009, el salario promedio de un jugador fue de $3,240,000.
-   - El incremento en el salario promedio durante este período fue de $", round(incremento_salario, 2), ".
+   - El incremento en el salario promedio durante este período fue de 
+   $", round(incremento_salario, 2), ".
 ")
 
 cat(informe)
